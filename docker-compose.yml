@@ -1,0 +1,22 @@
+services:
+  server:
+    container_name: client
+    build:
+      context: ./client
+    ports:
+      - '3000:3000'
+    networks:
+      - matcha
+
+  services:
+    container_name: services
+    build:
+      context: ./services
+    ports:
+      - '5000:5000'
+    networks:
+      - matcha
+
+networks:
+  matcha:
+    driver: bridge
